@@ -3,7 +3,7 @@
 ![Java](https://img.shields.io/badge/Language-Java-blue)
 ![Swing](https://img.shields.io/badge/GUI-Java%20Swing-orange)
 ![MySQL](https://img.shields.io/badge/Database-MySQL-brightgreen)
-![License](https://img.shields.io/badge/Project-Type-Academic-informational)
+
 
 > A desktop-based **Discussion Forum Application** built using **Java Swing** and **MySQL**, developed as a final-year BCA project
 
@@ -24,9 +24,10 @@
 
 ## 🖼️ Screenshots
 
-| Login Form | Home Page |
-|------------|-----------|
-| ![Login](https://via.placeholder.com/300x200?text=Login+Form) | ![Home](https://via.placeholder.com/300x200?text=Home+Page) |
+| Home Page |
+|-----------|
+| ![Home](https://github.com/udaypalli/TalkTime/blob/main/src/main/resources/images/Picture1.png?raw=true) |
+
 
 *You can replace these placeholders with real screenshots later.*
 
