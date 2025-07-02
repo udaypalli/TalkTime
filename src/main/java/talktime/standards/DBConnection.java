@@ -21,7 +21,7 @@ public class DBConnection {
          Class.forName("com.mysql.jdbc.Driver"); 
          String url = "jdbc:mysql://localhost:3306/talktime"; 
          String user = "root"; 
-         String password = "uday"; 
+         String password = " "; 
          conn = DriverManager.getConnection(url, user, password);
          //System.out.println("Connected to database successfully");
       } catch (ClassNotFoundException | SQLException e) {
