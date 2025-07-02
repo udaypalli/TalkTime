@@ -29,8 +29,6 @@
 | ![Home](https://github.com/udaypalli/TalkTime/blob/main/src/main/resources/images/Picture1.png?raw=true) |
 
 
-*You can replace these placeholders with real screenshots later.*
-
 ---
 
 ## 🛠️ Technologies Used
