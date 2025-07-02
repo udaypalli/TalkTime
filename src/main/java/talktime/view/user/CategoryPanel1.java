@@ -1,0 +1,145 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
+package talktime.view.user;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import talktime.standards.DatabaseHandler;
+/**
+ *
+ * @author Gopal
+ */
+public class CategoryPanel1 extends javax.swing.JPanel {
+
+    /**
+     * Creates new form CategoryPanel
+     */
+    private JLabel[] imageLabels;
+    private JLabel[] categoryLabels;
+    private JLabel[] descriptionLabels;
+    private JButton[] viewThreadsButtons;
+    
+    public CategoryPanel1() {
+        initComponents();
+        setLayout(new GridLayout(0, 3,10,10));
+        //showCat();
+        showCat1();
+    }
+    public void showCat(){
+        try{
+        DatabaseHandler db = new DatabaseHandler();
+        String sql = "select * from categories";
+        ResultSet rs = db.executeQuery(sql);
+        while(rs.next()){
+            for (int i = 1; i <= 9; i++) {
+            int id = rs.getInt("category_id");
+            String cat = rs.getString("category_name");
+            String desc = rs.getString("category_description");
+
+            // create a panel for the image
+            JPanel imagePanel = new JPanel(new CardLayout());
+            ImageIcon image = new ImageIcon("/images/card" + i + ".jpg");
+            JLabel imageLabel = new JLabel(image);
+            imagePanel.add(imageLabel);
+
+            // create a panel for the category info
+            JPanel infoPanel = new JPanel();
+            infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
+            JLabel catLabel = new JLabel(cat);
+            JLabel descLabel = new JLabel(desc.substring(0, 35) + "...");
+            //JLabel descLabel = new JLabel("Description for category " + "...");
+            JButton viewButton = new JButton("View Threads");
+            infoPanel.add(catLabel);
+            infoPanel.add(descLabel);
+            infoPanel.add(viewButton);
+
+            // add both panels to the main panel
+            add(imagePanel);
+            add(infoPanel);
+        }
+
+        setPreferredSize(new Dimension(878, 560));
+    }
+        
+        }catch(SQLException e){
+            
+        }
+    }
+    public void showCat1(){
+       try{
+        DatabaseHandler db = new DatabaseHandler();
+        String sql = "select * from categories";
+        ResultSet rs = db.executeQuery(sql);
+        imageLabels = new JLabel[9]; // Assumes only 3 categories will be displayed at a time
+            categoryLabels = new JLabel[9];
+            descriptionLabels = new JLabel[9];
+            viewThreadsButtons = new JButton[9];
+              int i = 0;
+            while (rs.next()) {
+                // Get data from ResultSet
+                //String imageName = rs.getString("image_name");
+                String category = rs.getString("category_name");
+                String description = rs.getString("category_description");
+                int categoryId = rs.getInt("category_id");
+
+                // Create components
+               //ImageIcon image = new ImageIcon("/images/card" + categoryId + ".jpg");
+               //ImageIcon icon = new ImageIcon(this.getClass().getResource("/images/Logo1.png")).getImage();
+                imageLabels[i] = new JLabel();
+                imageLabels[i].setPreferredSize(new Dimension(200,150));
+                imageLabels[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/card" + categoryId + ".jpg")));
+                categoryLabels[i] = new JLabel( category );
+                descriptionLabels[i] = new JLabel(description.substring(0, 35) );
+                viewThreadsButtons[i] = new JButton("View Threads");
+                viewThreadsButtons[i].addActionListener(e -> {
+                    // Handle button click event
+                    // Open new JFrame or JPanel that displays threads related to this category
+                });
+
+                // Add components to panel
+                JPanel cardPanel = new JPanel(new GridLayout(3, 1));
+                cardPanel.add(imageLabels[i]);
+                cardPanel.add(categoryLabels[i]);
+                cardPanel.add(descriptionLabels[i]);
+                cardPanel.add(viewThreadsButtons[i]);
+                this.add(cardPanel);
+
+                i++;
+            }
+           
+       } catch(SQLException e){
+           
+       }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(878, 588));
+        setMinimumSize(new java.awt.Dimension(878, 588));
+        setPreferredSize(new java.awt.Dimension(878, 588));
+        setLayout(new java.awt.GridLayout());
+    }// </editor-fold>//GEN-END:initComponents
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
+}
